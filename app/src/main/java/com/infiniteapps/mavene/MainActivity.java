@@ -1,16 +1,43 @@
 package com.infiniteapps.mavene;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
+
+    class MyViewHolder extends RecyclerView.ViewHolder{
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+    @NonNull
+    @Override
+    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
+}
 public class MainActivity extends AppCompatActivity {
     private FloatingActionButton addFab = null;
     ListView listView = null;
@@ -40,21 +67,7 @@ public class MainActivity extends AppCompatActivity {
             nameList.add(i);
         }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,nameList);
 
-        listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                String itemName = adapterView.getItemAtPosition(position).toString();
-                String itemPosition = Integer.toString(position);
-
-                Intent intent = new Intent(view.getContext(),SecondActivity.class);
-                intent.putExtra("ITEM_NAME",itemName);
-                intent.putExtra("ITEM_POSITION",itemPosition);
-                startActivity(intent);
-            }
-        });
 
     }
 
